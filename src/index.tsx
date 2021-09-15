@@ -2,8 +2,10 @@ import { StrictMode } from "react"
 import { createRoot } from "react-dom"
 import { SWRConfig } from "swr"
 import { Router } from "wouter"
-import { App } from "./App"
+import { AppConcurrent } from "./AppConcurrent"
+import { AppSync } from "./AppSync"
 import "./color.css"
+import { DoublePane } from "./DoublePane"
 import "./global.css"
 
 createRoot(globalThis.document.getElementById("root")!).render(
@@ -18,7 +20,11 @@ createRoot(globalThis.document.getElementById("root")!).render(
       }}
     >
       <Router base={import.meta.env.BASE_URL.replace(/\/+$/, "")}>
-        <App />
+        <DoublePane>
+          <AppSync />
+
+          <AppConcurrent />
+        </DoublePane>
       </Router>
     </SWRConfig>
   </StrictMode>
