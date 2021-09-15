@@ -20,8 +20,8 @@
   },
   "dependencies": {
     "@emotion/css": "11.1.x",
-    "react": "17.0.x",
-    "react-dom": "17.0.x",
+    "react": "18.0.0-alpha-50263d327-20210914",
+    "react-dom": "18.0.0-alpha-50263d327-20210914",
     "swr": "1.0.x",
     "vite": "2.5.x",
     "wouter": "2.7.x"
