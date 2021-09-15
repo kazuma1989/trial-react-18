@@ -1,7 +1,6 @@
-import { StrictMode } from "react"
+import { StrictMode, Suspense } from "react"
 import { createRoot } from "react-dom"
 import { SWRConfig } from "swr"
-import { Router } from "wouter"
 import { AppConcurrent } from "./AppConcurrent"
 import { AppSync } from "./AppSync"
 import "./color.css"
@@ -19,13 +18,15 @@ createRoot(globalThis.document.getElementById("root")!).render(
         suspense: true,
       }}
     >
-      <Router base={import.meta.env.BASE_URL.replace(/\/+$/, "")}>
-        <DoublePane>
+      <DoublePane>
+        <Suspense fallback={<p>全体読み込み中</p>}>
           <AppSync />
+        </Suspense>
 
+        <Suspense fallback={<p>全体読み込み中</p>}>
           <AppConcurrent />
-        </DoublePane>
-      </Router>
+        </Suspense>
+      </DoublePane>
     </SWRConfig>
   </StrictMode>
 )

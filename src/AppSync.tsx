@@ -3,6 +3,7 @@ import { Route, Switch, useLocation } from "wouter"
 import { Home } from "./Home"
 import { NotFound } from "./NotFound"
 import { Page1 } from "./Page1"
+import { Page2 } from "./Page2"
 
 export function AppSync() {
   const [_location] = useLocation()
@@ -21,15 +22,19 @@ export function AppSync() {
     >
       <h1>Sync</h1>
 
-      {pending && <p>読み込み中</p>}
+      {pending ? <p>ページ切り替え中</p> : <p>＿</p>}
 
       <Switch location={location}>
         <Route path="/">
           <Home />
         </Route>
 
-        <Route path="/page-1">
+        <Route path="/page_1">
           <Page1 />
+        </Route>
+
+        <Route path="/page_2">
+          <Page2 />
         </Route>
 
         <Route>

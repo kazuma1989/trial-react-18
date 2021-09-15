@@ -3,8 +3,8 @@ import useSWR from "swr"
 import { Link } from "wouter"
 import { fakeAPI } from "./fakeAPI"
 
-export function Home() {
-  const { data } = useSWR("home", fakeAPI, { suspense: true })
+export function Page2() {
+  const { data } = useSWR("page_2", fakeAPI, { suspense: true })
 
   return (
     <div
@@ -12,18 +12,18 @@ export function Home() {
         display: contents;
       `}
     >
-      <h1>Home</h1>
+      <h1>Page 2</h1>
       <p>data={data}</p>
 
       <p>
-        <Link to="/page_1">
+        <Link to="/">
           <a
             className={css`
               color: blue;
               text-decoration: underline;
             `}
           >
-            to Page 1
+            to Home
           </a>
         </Link>
       </p>
