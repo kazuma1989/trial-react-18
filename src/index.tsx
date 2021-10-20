@@ -1,4 +1,3 @@
-import { css, cx } from "@emotion/css"
 import { StrictMode, Suspense, useDeferredValue, useState } from "react"
 import { createRoot } from "react-dom"
 import useSWR, { SWRConfig } from "swr"
@@ -16,7 +15,7 @@ createRoot(globalThis.document.getElementById("root")!).render(
           delay(1_000).then(() => fetch(url).then((r) => r.json())),
       }}
     >
-      <Suspense fallback={<p>全体読み込み中</p>}>
+      <Suspense fallback={<progress>Loading...</progress>}>
         <App />
       </Suspense>
     </SWRConfig>
@@ -37,8 +36,9 @@ interface Todo {
 }
 
 function App() {
-  const [page, setPage] = useState(1)
-  const deferredPage = useDeferredValue(page)
+  const [currentPage, setCurrentPage] = useState(1)
+  const deferredPage = useDeferredValue(currentPage)
+  const pending = currentPage !== deferredPage
 
   const todos: Todo[] = useSWR(
     `https://jsonplaceholder.typicode.com/todos?_limit=10&_page=${deferredPage}`
@@ -46,30 +46,37 @@ function App() {
 
   return (
     <div>
+      <h1>React 18 Example</h1>
+
       <div>
-        {[1, 2, 3, 4, 5].map((p) => (
-          <button
-            key={p}
-            type="button"
-            onClick={() => {
-              setPage(p)
-            }}
-            className={cx(
-              p === page &&
-                css`
-                  background: var(--focus);
-                `
-            )}
-          >
-            {p}
-          </button>
-        ))}
+        {[1, 2, 3, 4, 5].map((page) => {
+          const current = page === currentPage
+
+          return (
+            <button
+              key={page}
+              type="button"
+              onClick={() => {
+                setCurrentPage(page)
+              }}
+              style={{
+                background: current ? "var(--focus)" : undefined,
+              }}
+            >
+              {page}
+            </button>
+          )
+        })}
       </div>
 
+      <progress style={{ visibility: pending ? "visible" : "hidden" }}>
+        Loading...
+      </progress>
+
       <table
-        className={css`
-          table-layout: auto;
-        `}
+        style={{
+          tableLayout: "auto",
+        }}
       >
         <thead>
           <tr>
