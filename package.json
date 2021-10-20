@@ -1,11 +1,11 @@
 {
-  "name": "template-vite",
+  "name": "trial-react-18",
   "version": "0.0.0",
   "author": "Kazuma Ebina <kazuma1989@quipper.com>",
   "license": "GPL-3.0-or-later",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kazuma1989/template-vite"
+    "url": "https://github.com/kazuma1989/trial-react-18"
   },
   "engines": {
     "node": ">=12.17.0",
