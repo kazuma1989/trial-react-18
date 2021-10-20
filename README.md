@@ -1,8 +1,4 @@
-# Vite template
-
-```console
-npx degit kazuma1989/template-vite
-```
+# React 18 Example
 
 ビルドして使うには次のコマンドを実行してください。10 秒ほどでインストールとビルドが終わります。
 
@@ -19,7 +15,6 @@ npm run build
 
 アプリを開発モードで起動します。ブラウザーが起動して http://localhost:3000 が表示されます。
 ブラウザーを起動したくないときは `-- --no-open` オプションを渡してください。
-もしくは環境変数 `BROWSER` を `none` に設定してください。(e.g. `BROWSER=none npm start`)
 
 ソースコードを編集するとページがリロードします。
 
@@ -33,10 +28,6 @@ TypeScript による型検査は別コンソールで実行してください。
 ### `npm run format`
 
 ソースコードを整形します。
-
-### `npm run lint`
-
-ソースコードを静的検査します。
 
 ## IDE
 

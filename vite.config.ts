@@ -10,7 +10,6 @@ const config: UserConfigFn = async () => {
 
     server: {
       port: 3000,
-      open: false,
     },
 
     build: {
